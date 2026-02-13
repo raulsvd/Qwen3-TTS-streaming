@@ -33,49 +33,35 @@ See examples/
 - [test_streaming_optimized.py](https://github.com/dffdeeq/Qwen3-TTS-streaming/blob/main/examples/test_streaming_optimized.py)
 - [test_optimized_no_streaming.py](https://github.com/dffdeeq/Qwen3-TTS-streaming/blob/main/examples/test_optimized_no_streaming.py)
 
-## Installation (python 3.12)
+## Installation (python 3.12, Linux)
 
-> Note: torch versions differ between Linux/Windows due to available flash_attn prebuilt wheels.
+### 1. Install CUDA Toolkit 12.8 and system dependencies
 
-### 1. Install SOX
-
-**Linux:**
 ```bash
-sudo apt install sox libsox-fmt-all
+# Add the NVIDIA CUDA 12.8 repository
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
+sudo dpkg -i cuda-keyring_1.1-1_all.deb
+sudo apt-get update
+
+# Install the 12.8 toolkit and system dependencies
+sudo apt-get install -y cuda-toolkit-12-8 ninja-build sox libsox-fmt-all ffmpeg
+
+# Add CUDA to your PATH
+echo 'export CUDA_HOME=/usr/local/cuda-12.8
+export PATH=$CUDA_HOME/bin:$PATH
+export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc
+source ~/.bashrc
 ```
 
-**Windows:** 
-```bash
-# Download from https://sourceforge.net/projects/sox/ and add to PATH !!
-```
+### 2. Install the package
 
-### 2. Create environment
-```bash
-conda create -n qwen3-tts python=3.12 -y
-conda activate qwen3-tts
-```
-
-### 3. Install dependencies
-
-**Linux:**
-```bash
-pip install torch==2.9.1 torchaudio==2.9.1 --index-url https://download.pytorch.org/whl/cu130
-pip install https://github.com/mjun0812/flash-attention-prebuild-wheels/releases/download/v0.6.8/flash_attn-2.8.3%2Bcu130torch2.9-cp312-cp312-linux_x86_64.whl
-```
-
-**Windows:**
-```bash
-pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu130
-pip install https://github.com/mjun0812/flash-attention-prebuild-wheels/releases/download/v0.7.12/flash_attn-2.8.3%2Bcu130torch2.10-cp312-cp312-win_amd64.whl
-pip install -U "triton-windows<3.7"
-```
-
-### 4. Install package
 ```bash
 git clone https://github.com/dffdeeq/Qwen3-TTS-streaming.git
 cd Qwen3-TTS-streaming
-pip install -e .
+uv sync --all-packages --all-extras
 ```
+
+> **Note:** Running `uv sync` a second time may show `flash-attn` being reinstalled — this is a known uv quirk with local version identifiers in the wheel and is harmless.
 
 ## Parameters
 

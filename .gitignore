@@ -20,5 +20,6 @@ wheels/
 *.egg
 .idea/
 .vscode/
+.claude-collective/
 venv/
 env/
