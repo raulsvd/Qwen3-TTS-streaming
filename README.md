@@ -30,8 +30,8 @@ In addition to real streaming, this fork includes an **~6x inference speedup** v
 ## Usage
 
 See examples/
-- [test_streaming_optimized.py](https://github.com/dffdeeq/Qwen3-TTS-streaming/blob/main/examples/test_streaming_optimized.py)
-- [test_optimized_no_streaming.py](https://github.com/dffdeeq/Qwen3-TTS-streaming/blob/main/examples/test_optimized_no_streaming.py)
+- [test_streaming_optimized.py](https://github.com/raulsvd/qwen3-tts-streaming-raulsvd/blob/main/examples/test_streaming_optimized.py)
+- [test_optimized_no_streaming.py](https://github.com/raulsvd/qwen3-tts-streaming-raulsvd/blob/main/examples/test_optimized_no_streaming.py)
 
 ## Installation (python 3.12, Linux)
 
@@ -56,8 +56,8 @@ source ~/.bashrc
 ### 2. Install the package
 
 ```bash
-git clone https://github.com/dffdeeq/Qwen3-TTS-streaming.git
-cd Qwen3-TTS-streaming
+git clone https://github.com/raulsvd/qwen3-tts-streaming-raulsvd.git
+cd qwen3-tts-streaming-raulsvd
 uv sync --all-packages --all-extras
 ```
 
